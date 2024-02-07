@@ -13,8 +13,8 @@ jobs:
 
     steps:
 
-      - name: Descarga repositorio
-        uses: actions/checkout@v3
+      #- name: Descarga repositorio
+        #uses: actions/checkout@v3
 
       - name: Run a multi-line script
         run: |
@@ -25,6 +25,9 @@ jobs:
     runs-on: ubuntu-latest
     
     steps:
+
+      - name: Descarga repositorio
+        uses: actions/checkout@v3
     
       - name: Static Application Security Testing
         run: |

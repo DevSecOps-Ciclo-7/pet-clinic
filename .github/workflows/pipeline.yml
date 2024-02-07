@@ -26,6 +26,8 @@ jobs:
     
     steps:
     
-      - name: Hola
+      - name: Static Application Security Testing
         run: |
-          echo "hola"
+          chmod +x gradlew 
+          ./gradlew sonar -Dsonar.token=${{ secrets.SONAR_TOKEN }}
+          

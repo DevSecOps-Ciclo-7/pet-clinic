@@ -20,6 +20,10 @@ jobs:
         run: |
           chmod +x gradlew
           ./gradlew build
+      
+      - name: CHMOD
+        run: |
+          chmod +x mvnw
           
       - name: Software Composition Analysis with GHAS
         uses: advanced-security/maven-dependency-submission-action@v3.0.0

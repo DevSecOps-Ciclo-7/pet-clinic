@@ -49,7 +49,7 @@ jobs:
       - name: Build docker
         run: |
           ls -ltra 
-          docker build --tag clagosu:pet-clinic:latest .
+          docker build --tag clagosu/pet-clinic:latest .
           docker images 
           
       #- name: Build and push

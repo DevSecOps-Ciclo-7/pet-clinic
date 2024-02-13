@@ -21,6 +21,9 @@ jobs:
           chmod +x gradlew
           ./gradlew build
           
+      - name: Software Composition Analysis with GHAS
+        uses: advanced-security/maven-dependency-submission-action@v3.0.0
+          
       - name: Copia de Jar a Raiz de proyecto
         run: |
           cp $GITHUB_WORKSPACE/build/libs/spring-petclinic-2.6.0.jar .

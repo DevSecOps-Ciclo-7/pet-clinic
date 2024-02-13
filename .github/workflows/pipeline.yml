@@ -49,6 +49,8 @@ jobs:
       - name: Build Docker
         run: |
           docker build --tag clagosu/pet-clinic:latest .
+
+      ## TODO: AGREGAR ANALISIS DE IMAGEN CONSTRUIDA. 
       
       - name: Push Docker
         run: | 
@@ -81,4 +83,9 @@ jobs:
         run: |
           chmod +x gradlew 
           ./gradlew sonar -Dsonar.token=${{ secrets.SONAR_TOKEN }}
+
+
+    ##TODO: AGREGAR DESPLIEGUE EN MINIKUBE 
+    ##TODO: AGREGAR ANALISIS DAST 
+    
           

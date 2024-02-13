@@ -20,8 +20,24 @@ jobs:
         run: |
           chmod +x gradlew
           ./gradlew build
-          ls -ltra 
-          ls -ltra build/libs
+          
+      - name: Copia de Jar a Raiz de proyecto
+        run: |
+          cp $GITHUB_WORKSPACE/build/libs/spring-petclinic-2.6.0.jar .
+          chmod 777 spring-petclinic-2.6.0.jar
+          
+      - name: Dependency Check
+        uses: dependency-check/Dependency-Check_Action@1.1.0
+        with:
+          project: 'pet-clinic'
+          path: '.'
+          format: 'html' 
+      
+      - name: Upload Test results
+        uses: actions/upload-artifact@master
+        with:
+           name: Depcheck report
+           path: ${{github.workspace}}/reports
           
   test:
     needs: build

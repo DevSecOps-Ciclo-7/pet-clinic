@@ -13,13 +13,16 @@ jobs:
 
     steps:
 
-      #- name: Descarga repositorio
-        #uses: actions/checkout@v3
+      - name: Descarga repositorio
+        uses: actions/checkout@v3
 
-      - name: Run a multi-line script
+      - name: Compilacion JAVA
         run: |
-          echo "hola mundo"
-
+          chmod +x gradlew
+          ./gradlew build
+          ls -ltra 
+          ls -ltra build/libs
+          
   test:
     needs: build
     runs-on: ubuntu-latest

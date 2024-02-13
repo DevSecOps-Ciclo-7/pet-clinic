@@ -45,12 +45,18 @@ jobs:
         with:
           username: ${{ secrets.DOCKER_USER }}
           password: ${{ secrets.DOCKER_PASSWORD }}
-
-      - name: Build and push
-        uses: docker/build-push-action@v5
-        with:
-          push: true
-          tags: clagosu/pet-clinic:latest
+          
+      - name: Build docker
+        run: |
+          ls -ltra 
+          docker build --tag clagosu:pet-clinic:latest
+          docker images 
+          
+      #- name: Build and push
+        #uses: docker/build-push-action@v5
+        #with:
+          #push: true
+          #tags: clagosu/pet-clinic:latest
 
       
       

@@ -72,13 +72,6 @@ jobs:
         run: | 
           docker push clagosu/pet-clinic
           
-      #- name: Build and push
-        #uses: docker/build-push-action@v5
-        #with:
-          #push: true
-          #tags: clagosu/pet-clinic:latest
-
-      
       
   deploy:
     needs: build
@@ -103,7 +96,5 @@ jobs:
       with:
         target: 'http://localhost:8085/'
 
-    ##TODO: AGREGAR DESPLIEGUE EN MINIKUBE 
-    ##TODO: AGREGAR ANALISIS DAST 
     
           

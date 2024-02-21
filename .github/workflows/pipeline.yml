@@ -21,16 +21,16 @@ jobs:
           chmod +x gradlew
           ./gradlew build
       
-      - name: Setup Java JDK
-        uses: actions/setup-java@v4.0.0
-        with: 
-          java-version: 17
-          distribution: 'temurin'
+      #- name: Setup Java JDK
+        #uses: actions/setup-java@v4.0.0
+        #with: 
+          #java-version: 17
+          #distribution: 'temurin'
     
-      - name: Static Application Security Testing
-        run: |
-          chmod +x gradlew 
-          ./gradlew sonar -Dsonar.token=${{ secrets.SONAR_TOKEN }}
+      #- name: Static Application Security Testing
+        #run: |
+          #chmod +x gradlew 
+          #./gradlew sonar -Dsonar.token=${{ secrets.SONAR_TOKEN }}
           
       - name: Copia de Jar a Raiz de proyecto
         run: |

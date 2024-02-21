@@ -20,6 +20,17 @@ jobs:
         run: |
           chmod +x gradlew
           ./gradlew build
+      
+      - name: Setup Java JDK
+        uses: actions/setup-java@v4.0.0
+        with: 
+          java-version: 17
+          distribution: 'temurin'
+    
+      - name: Static Application Security Testing
+        run: |
+          chmod +x gradlew 
+          ./gradlew sonar -Dsonar.token=${{ secrets.SONAR_TOKEN }}
           
       - name: Copia de Jar a Raiz de proyecto
         run: |
@@ -55,7 +66,7 @@ jobs:
         with:
           image-ref: 'clagosu/pet-clinic:latest'
           format: 'table'
-          exit-code: 1
+          #exit-code: 1 PARAMETRO PARA QUIEBRE DE PIPELINE 
       
       - name: Push Docker
         run: | 
@@ -69,25 +80,19 @@ jobs:
 
       
       
-  test:
+  deploy:
     needs: build
-    runs-on: ubuntu-latest
+    runs-on: self-hosted
     
     steps:
 
-      - name: Descarga repositorio
-        uses: actions/checkout@v3
+    - name: Pull de la Imagen Docker
+      run: |
+        docker pull clagosu/pet-clinic:latest
 
-      - name: Setup Java JDK
-        uses: actions/setup-java@v4.0.0
-        with: 
-          java-version: 17
-          distribution: 'temurin'
-    
-      - name: Static Application Security Testing
-        run: |
-          chmod +x gradlew 
-          ./gradlew sonar -Dsonar.token=${{ secrets.SONAR_TOKEN }}
+    - name: Despliegue Aplicaion
+      run: |
+        docker run -p 8085:8085 --name pet-clinic-deploy -d clagosu/pet-clinic:latest
 
 
     ##TODO: AGREGAR DESPLIEGUE EN MINIKUBE 

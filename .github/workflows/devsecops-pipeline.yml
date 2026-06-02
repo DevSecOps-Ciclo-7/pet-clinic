@@ -1,10 +1,10 @@
- name: DevSecOps Pipeline
+name: DevSecOps Pipeline
 
 on:
   push:
-    branches: [ devsecops-pipeline ]
+    branches: [devsecops-pipeline]
   pull_request:
-    branches: [ devsecops-pipeline ]
+    branches: [devsecops-pipeline]
 
 jobs:
   build-and-test:
@@ -23,8 +23,8 @@ jobs:
       - name: Set up JDK
         uses: actions/setup-java@v4
         with:
-          distribution: 'temurin'
-          java-version: '17'
+          distribution: "temurin"
+          java-version: "17"
 
       - name: Cache Maven packages
         uses: actions/cache@v4
@@ -58,8 +58,8 @@ jobs:
       - name: Install Java
         uses: actions/setup-java@v4
         with:
-          distribution: 'temurin'
-          java-version: '17'
+          distribution: "temurin"
+          java-version: "17"
 
       - name: Install Dependency-Check
         run: |

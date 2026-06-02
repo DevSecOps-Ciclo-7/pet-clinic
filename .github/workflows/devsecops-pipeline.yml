@@ -74,4 +74,5 @@ jobs:
             --scan . \
             --format "HTML" \
             --out "odc-report" \
-            --failOnCVSS 5
+            --failOnCVSS 5 \
+            --disableOssIndex

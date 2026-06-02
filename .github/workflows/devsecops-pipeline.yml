@@ -46,6 +46,7 @@ jobs:
           args: >
             -Dsonar.projectKey=jakojazz_pet-clinic
             -Dsonar.organization=jakojazz
+            -Dsonar.java.binaries=target/classes
 
   sca:
     runs-on: ubuntu-latest

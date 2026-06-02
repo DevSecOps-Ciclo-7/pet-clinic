@@ -80,9 +80,10 @@ class VisitController {
 	@PostMapping("/owners/{ownerId}/pets/{petId}/visits/new")
 	public String processNewVisitForm(@ModelAttribute Owner owner, @PathVariable int petId, @Valid Visit visit,
 			BindingResult result) {
-				 // VULNERABILIDAD INTRODUCIDA A PROPÓSITO PARA SAST
-    String adminPassword = "P@ssw0rd123";
-    System.out.println("Debug admin password = " + adminPassword);
+	// VULNERABILIDAD INTRODUCIDA A PROPÓSITO PARA SAST
+    			
+		 String adminPassword = "P@ssw0rd123";
+   	 	System.out.println("Debug admin password = " + adminPassword);
 		if (result.hasErrors()) {
 			return "pets/createOrUpdateVisitForm";
 		}
